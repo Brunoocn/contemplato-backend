@@ -21,6 +21,6 @@ const User = db.define("users", {
 });
 
 User.hasMany(Task, { foreignKey: "userId" });
-Task.belongsTo(User, { foreignKey: "userId" });
+Task.belongsTo(User);
 
 export default { User };
