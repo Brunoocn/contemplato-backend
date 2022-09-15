@@ -18,10 +18,12 @@ async function findTask(req, res) {
 }
 
 async function updateTask(req, res) {
+  const { task } = req.body;
+
   try {
     await Task.update(
       {
-        task: req.body.task,
+        task: task,
       },
       {
         where: {

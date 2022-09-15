@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
 
-export default db.define("tasks", {
+const Task = db.define("tasks", {
   id: {
     type: DataTypes.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -16,3 +16,5 @@ export default db.define("tasks", {
     allowNull: false,
   },
 });
+
+export { Task as default };
