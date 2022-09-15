@@ -4,10 +4,10 @@ import checkAuth from "../middlewares/checkAuth.js";
 
 const routes = express.Router();
 
-routes.get("/tasks", checkAuth, tasks.findAllTasks);
-routes.get("/tasks/:id", checkAuth, tasks.findTask);
-routes.post("/tasks", checkAuth, tasks.createTask);
-routes.put("/tasks/:id", checkAuth, tasks.updateTask);
-routes.delete("/tasks/:id", checkAuth, tasks.deleteTask);
+routes.get("/", checkAuth, tasks.findAllTasks);
+routes.get("/:id", checkAuth, tasks.findTask);
+routes.post("/", checkAuth, tasks.createTask);
+routes.put("/:id", checkAuth, tasks.updateTask);
+routes.delete("/:id", checkAuth, tasks.deleteTask);
 
 export { routes as default };
