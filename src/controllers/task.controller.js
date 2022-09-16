@@ -2,6 +2,7 @@ import Task from "../models/taksModel.js";
 
 async function createTask(req, res) {
   try {
+    req.body.userId = req.userId;
     const result = await Task.create(req.body);
     return res.status(200).json(result);
   } catch (err) {
@@ -11,15 +12,20 @@ async function createTask(req, res) {
 
 async function findAllTasks(req, res) {
   try {
-    result = await Task.findAll();
+    const result = await Task.findAll({
+      where: {
+        userId: req.userId,
+      },
+    });
     return res.status(200).json(result);
   } catch (err) {
-    return res.status(400).json(err); //http correto?
+    console.log(err);
+    return res.status(400).json(err);
   }
 }
 async function findTask(req, res) {
   try {
-    result = await Task.findByPk(req.params.id);
+    const result = await Task.findByPk(req.params.id);
     return res.status(200).json(result);
   } catch (err) {
     return res.status(400).json(err);
