@@ -7,7 +7,7 @@ const { SECRET_KEY } = process.env;
 async function login(req, res) {
   const { sign } = jwt;
   const { email, password } = req.body;
-  const user = await User.findOne({ where: email });
+  const user = await User.findOne({ email: email });
   const verifiedPassword = verifyPassword(password, user.password);
 
   if (user === null || !verifiedPassword) {

@@ -13,7 +13,6 @@ function checkAuth(req, res, next) {
   let verifyToken = null;
   try {
     verifyToken = verify(token, SECRET_KEY);
-    
   } catch (err) {
     return res.status(401).json(err);
   }
