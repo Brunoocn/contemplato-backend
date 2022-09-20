@@ -23,6 +23,7 @@ async function findAllTasks(req, res) {
     return res.status(400).json(err);
   }
 }
+
 async function findTask(req, res) {
   try {
     const result = await Task.findByPk(req.params.id);
